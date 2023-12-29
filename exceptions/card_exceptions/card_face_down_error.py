@@ -1,0 +1,2 @@
+class CardFaceDownError(ValueError):
+    pass
