@@ -1,24 +1,16 @@
 from deck.deck import Deck
 from card.transport_card import TransportCard
+import json
+from collections import deque
 
 class TransportCardDeck(Deck):
     def __init__(self):
         super().__init__()
 
-        # chargement des cartes transport classique
-        for i in range(12):
-            self.add_card(TransportCard(color = "blanc"))
-            self.add_card(TransportCard(color = "bleu"))
-            self.add_card(TransportCard(color = "jaune"))
-            self.add_card(TransportCard(color = "vert"))
-            self.add_card(TransportCard(color = "rouge"))
-            self.add_card(TransportCard(color = "violet"))
-            self.add_card(TransportCard(color = "noir"))
-            self.add_card(TransportCard(color = "orange"))
-        
-        # chargement des cartes locomotive
-        for i in range(14):
-            self.add_card(TransportCard(color = "locomotive"))
+        # Chargement des données depuis le fichier JSON
+        with open("original_game_data\\color_cards.json", "r") as fichier:
+            donnees_json = json.load(fichier)
+        self.cards = deque([TransportCard(color = card["color"]) for card in donnees_json])
         
         # mélange des cartes
         self.shuffle()
