@@ -8,5 +8,5 @@ class Card:
 
     def __str__(self) -> str:
         if self.face_down:
-            raise CardFaceDownError("La carte est face cachée. Impossible de récupérer la valeur.")
+            raise CardFaceDownError("Card is face down. Unable to retrieve its value")
         return f'{self.card_type} - {self.value}'

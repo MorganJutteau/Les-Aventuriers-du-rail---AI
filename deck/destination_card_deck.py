@@ -7,11 +7,11 @@ class DestinationCardDeck(Deck):
     def __init__(self):
         super().__init__()
 
-        # Chargement des données depuis le fichier JSON
-        with open("original_game_data\\1910.usa.tickets.json", "r") as fichier:
-            donnees_json = json.load(fichier)
-        self.cards = deque([DestinationCard(card["cities"][0], card["cities"][1], card["points"]) for card in donnees_json])
+        # data is loaded from a json file
+        with open("original_game_data\\1910.usa.tickets.json", "r") as file:
+            json_data = json.load(file)
+        self.cards = deque([DestinationCard(card["cities"][0], card["cities"][1], card["points"]) for card in json_data])
 
-        # mélange des cartes
+        # the deck is then shuffled
         self.shuffle()
         
