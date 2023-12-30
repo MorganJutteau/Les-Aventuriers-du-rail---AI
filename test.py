@@ -5,11 +5,11 @@ from card.card import Card
 from card.destination_card import DestinationCard
 from card.transport_card import TransportCard
 
-# Instanciation des decks
+# Deck instanciation
 destination_deck = DestinationCardDeck()
 transport_deck = TransportCardDeck()
 
-# Affichage de quelques cartes pour vérifier
+# Printing a few cards from each deck
 for _ in range(5):
     destination_card = destination_deck.draw()
     print(f"Destination Card: {destination_card}")

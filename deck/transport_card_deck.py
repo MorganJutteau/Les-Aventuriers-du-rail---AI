@@ -8,9 +8,9 @@ class TransportCardDeck(Deck):
         super().__init__()
 
         # data is loaded from a json file
-        with open("original_game_data\\color_cards.json", "r") as fichier:
-            donnees_json = json.load(fichier)
-        self.cards = deque([TransportCard(color = card["color"]) for card in donnees_json])
+        with open("original_game_data\\color_cards.json", "r") as file:
+            json_data = json.load(file)
+        self.cards = deque([TransportCard(color = card["color"]) for card in json_data])
         
         # the deck is then shuffled
         self.shuffle()
