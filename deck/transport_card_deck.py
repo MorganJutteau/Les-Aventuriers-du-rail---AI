@@ -14,11 +14,11 @@ class TransportCardDeck(Deck):
             self.add_card(TransportCard(color = "rouge"))
             self.add_card(TransportCard(color = "violet"))
             self.add_card(TransportCard(color = "noir"))
-            self.add_card(TransportCard(color = "marron"))
+            self.add_card(TransportCard(color = "orange"))
         
         # chargement des cartes locomotive
         for i in range(14):
             self.add_card(TransportCard(color = "locomotive"))
         
         # mélange des cartes
-        self.shuffle(self.cards)
+        self.shuffle()

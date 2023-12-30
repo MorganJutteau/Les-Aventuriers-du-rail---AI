@@ -4,7 +4,7 @@ from typing import Deque
 
 class Deck:
     def __init__(self):
-        self.cards : Deque[Card] = ()
+        self.cards : Deque[Card] = Deque([])
     def shuffle(self):
         shuffle(self.cards)
     def draw(self):
