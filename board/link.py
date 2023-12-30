@@ -20,4 +20,4 @@ class Link:
         self.owner = builder
 
     def __str__(self) -> str:
-        return f"weight: {self.weight}, color: {self.color}"
+        return f"weight: {self.weight}, color: {self.color}, owner: {self.owner}"

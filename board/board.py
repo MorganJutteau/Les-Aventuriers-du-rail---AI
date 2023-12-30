@@ -2,6 +2,7 @@ import sys
 import os
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import numpy as np
 from utilities.unordered_pair_hashtable import UnorderedPairHashtable
 
@@ -29,10 +30,13 @@ class Board:
         self.nodes[link.node_1.id].neighbors.append(link.node_2)
         self.nodes[link.node_2.id].neighbors.append(link.node_1)
 
-    def build_on_link(self, id_a, id_b):
+    def build_on_link(self, id_a, id_b, builder):
         # id_a and id_b are the ids of the nodes that are linked
         link = self.links.get(id_a, id_b)
-        link.on_built()
+        link.on_built(builder)
+
+    def get_link(self, id_a, id_b):
+        return self.links.get(id_a, id_b)
 
     def __str__(self) -> str:
         string = "##### NODE NAMES #####\n"
