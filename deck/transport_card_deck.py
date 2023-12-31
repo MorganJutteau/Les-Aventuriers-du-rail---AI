@@ -14,3 +14,6 @@ class TransportCardDeck(Deck):
         
         # the deck is then shuffled
         self.shuffle()
+
+        # getting 5 face up cards
+        self.upside_cards = [self.cards.popleft() for i in range(5)]

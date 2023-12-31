@@ -1,12 +1,13 @@
-from exceptions.card_exceptions.card_face_down_error import CardFaceDownError
-
 class Card:
-    def __init__(self, card_type: str, value, face_down : bool = True):
+    def __init__(self, card_type: str, value):
         self.card_type = card_type
         self.value = value
-        self.face_down = face_down
 
     def __str__(self) -> str:
-        if self.face_down:
-            raise CardFaceDownError("Card is face down. Unable to retrieve its value")
         return f'{self.card_type} - {self.value}'
+    
+    def get_card_type(self):
+        return self.card_type
+    
+    def get_card_value(self):
+        return self.value
