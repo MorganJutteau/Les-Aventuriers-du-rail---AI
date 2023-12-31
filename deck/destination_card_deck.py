@@ -14,4 +14,3 @@ class DestinationCardDeck(Deck):
 
         # the deck is then shuffled
         self.shuffle()
-        
