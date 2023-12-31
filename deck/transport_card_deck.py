@@ -17,3 +17,6 @@ class TransportCardDeck(Deck):
 
         # getting 5 face up cards
         self.upside_cards = [self.cards.popleft() for i in range(5)]
+    
+    def get_upside_cards(self):
+        return self.upside_cards
