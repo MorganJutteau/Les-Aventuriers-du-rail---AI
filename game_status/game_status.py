@@ -28,3 +28,16 @@ class GameStatus:
 
     def end_turn(self):
         self.current_player = (self.current_player + 1) % len(self.player_data)
+
+    # Getters (used by players)
+    def get_player_hand(self):
+        return self.players_hands[self.current_player]
+
+    def get_player_destination_cards(self):
+        return self.players_destination_cards[self.current_player]
+
+    def get_player_points(self, player):
+        return self.point_counter.get_points(player)
+
+    def get_board(self):
+        return self.board
