@@ -9,3 +9,6 @@ class DestinationCard(Card):
     
     def get_number_of_points(self):
         return self.points
+    
+    def get_cities(self):
+        return self.get_card_value()
