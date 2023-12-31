@@ -20,3 +20,12 @@ class TransportCardDeck(Deck):
     
     def get_upside_cards(self):
         return self.upside_cards
+    
+    def draw_upside_card(self, position : int):
+        """
+        position represents the card position in the upside_card list. 0 = first, 4 = last
+        """
+        card = self.upside_cards.pop(position)
+        self.upside_cards[position] = self.draw()
+
+        return card
