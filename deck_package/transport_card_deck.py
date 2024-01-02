@@ -26,7 +26,7 @@ class TransportCardDeck(Deck):
         """
         position represents the card position in the upside_card list. 0 = first, 4 = last
         """
-        card = self.upside_cards.pop(position)
+        card = self.upside_cards[position]
         self.upside_cards[position] = self.draw()
 
         return card

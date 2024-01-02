@@ -6,7 +6,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from deck_package.destination_card_deck import DestinationCardDeck
 from deck_package.transport_card_deck import TransportCardDeck
 from player_package.player import Player
-from player_package.player_action import *
+from player_package.player_action import PlayerAction
 
 
 class HumanPlayer(Player):
@@ -16,13 +16,14 @@ class HumanPlayer(Player):
 
         print("What would you like to do?")
         print(
-            f"1. Draw a transport card : {DRAW_TRANSPORT} <indice_1> <indice_2> or {DRAW_TRANSPORT} <index> (indices are from 0, use 5 for drawing from downside cards))"
+            f"1. Draw a transport card : {PlayerAction.DRAW_TRANSPORT} <indice_1> <indice_2> or {PlayerAction.DRAW_TRANSPORT} <index> (indices are from 0, use 5 for drawing from downside cards))"
         )
-        print(f"2. Draw a destination card : {DRAW_DESTINATION}")
-        print(f"3. Build on a link : {BUILD} <node_a> <node_b>")
+        print(f"2. Draw a destination card : {PlayerAction.DRAW_DESTINATION}")
+        print(f"3. Build on a link : {PlayerAction.BUILD} <node_a> <node_b>")
 
         while True:
             action = input("Enter your action: ")
+            action = action.strip()
             action = action.split(" ")
             action_type = action[0]
             args = action[1:]
@@ -33,24 +34,28 @@ class HumanPlayer(Player):
                 print(e)
 
     def print_status(self):
+        print(
+            "\033[91m"
+            + f"#####################TURN {self.game_status.current_turn}#######################"
+            + "\033[0m"
+        )
+
         # print the board
         print(self.game_status.board)
 
         # print the player's hand
         print("Your hand:")
-        print(self.game_status.player_transport_cards[self.game_status.current_player])
-
-        # print the player's destination cards
-        print("Your destination cards:")
-        print(
-            self.game_status.players_destination_cards[self.game_status.current_player]
-        )
+        print(self.game_status.player_hands[self.game_status.current_player])
 
         # print the player's points
         print("Your points:")
         print(
             self.game_status.point_counter.get_points(self.game_status.current_player)
         )
+
+        # print the wagons left
+        print("Your wagons:")
+        print(self.game_status.players_wagons_left[self.game_status.current_player])
 
         # print the visible transport cards
         print("Visible transport cards:")
